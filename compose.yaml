@@ -8,10 +8,20 @@ services:
     ports:
       - "53:53/udp"
 
-  web:
+  web01:
     build: 
       context: ./web
       dockerfile: Dockerfile
-    container_name: web
+    container_name: web01
     ports:
       - "80:80/tcp"
+
+   
+    proxy:
+       build: 
+        context: ./proxy
+        dockerfile: Dockerfile
+      container_name: proxy
+      ports:
+        - "80:80/tcp"
+    
